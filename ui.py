@@ -24,13 +24,15 @@ def show_books(books):
     """ Display all books in a list of Books, or a 'No books' message
      :param books: the book list """
 
-    # TODO print a blank line before and after the book list or no books message
+    #printing a blank line before and after the book list also for no books message.
 
     if books:
         for book in books:
-            print(book)
+            print(f'\n', book,'\n') 
+            #added new line markers here for readability.issue #8 project2.
     else:
-        print('No books to display')
+        print(f'\n','No books to display','\n') 
+        #added new line markers here for readability. issues#8 project2.
 
 
 def get_book_info():
