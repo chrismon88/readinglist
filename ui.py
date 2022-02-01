@@ -27,11 +27,14 @@ def show_books(books):
     #printing a blank line before and after the book list also for no books message.
 
     if books:
+        print()
         for book in books:
-            print(f'\n', book,'\n') 
+            print(f'{book}')
+
             #added new line markers here for readability.issue #8 project2.
+        print()    
     else:
-        print(f'\n','No books to display','\n') 
+        print(f'\nNo books to display\n') 
         #added new line markers here for readability. issues#8 project2.
 
 
