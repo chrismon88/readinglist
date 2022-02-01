@@ -32,8 +32,11 @@ def create_menu():
 
 
 def add_book():
-    new_book = ui.get_book_info()
-    new_book.save()
+    try:
+        new_book = ui.get_book_info()
+        new_book.save()
+    except:
+            print("Please enter a new book, book already entered.")
     
 
 def show_read_books():
