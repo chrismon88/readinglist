@@ -60,11 +60,11 @@ def search_book():
     matches = store.book_search(search_term)
     ui.show_books(matches)
 
-
+##TODO modify main.py to check if the book is found or not before modifying.
 def change_read():
 
     book_id = ui.get_book_id()
-    book = store.get_book_by_id(book_id)  
+    book = store.get_book_by_id(book_id) 
     new_read = ui.get_read_value()     
     book.read = new_read 
     book.save()

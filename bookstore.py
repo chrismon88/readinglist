@@ -176,13 +176,12 @@ class BookStore:
 
             return found
 
-
-        def get_book_by_id(self, id):
-            """ Searches list for Book with given ID,
+        """ Searches list for Book with given ID,
             :param id the ID to search for
             :returns the book, if found, or None if book not found.
-            """
-         
+        """
+        def get_book_by_id(self, id):
+
             get_book_by_id_sql = 'SELECT rowid, * FROM books WHERE rowid = ?'
 
             con = sqlite3.connect(db) 
@@ -192,7 +191,9 @@ class BookStore:
             
             if book_data:
                 book = Book(book_data['title'], book_data['author'], book_data['read'], book_data['rowid'])
-                    
+            else: 
+                return None       
+                # added return None for book not found.    
             con.close()            
             
             return book 
@@ -239,7 +240,7 @@ class BookStore:
             for r in rows:
                 book = Book(r['title'], r['author'], r['read'], r['rowid'])
                 books.append(book)
-
+           
             con.close()            
             
             return books
