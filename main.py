@@ -2,6 +2,7 @@
 
 from bookstore import Book, BookStore
 from menu import Menu
+from bookstore import BookError
 import ui
 
 store = BookStore()
@@ -35,8 +36,8 @@ def add_book():
     try:
         new_book = ui.get_book_info()
         new_book.save()
-    except:
-            print("Please enter a new book, book already entered.")
+    except BookError: 
+        print("\nThis book is already in the store.\n")
     
 
 def show_read_books():
