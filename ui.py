@@ -29,7 +29,7 @@ def show_books(books):
     if books:
         print()
         for book in books:
-            print(f'{book}')
+            print(book)
 
             #added new line markers here for readability.issue #8 project2.
         print()    
