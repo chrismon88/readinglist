@@ -2,7 +2,6 @@
 
 from bookstore import Book, BookStore
 from menu import Menu
-from bookstore import BookError
 import ui
 
 store = BookStore()
@@ -15,7 +14,7 @@ def main():
         choice = ui.display_menu_get_choice(menu)
         action = menu.get_action(choice)
         action()
-        if choice == 'Q':
+        if choice == 'Q' or choice == 'q':
             break
 
 
@@ -27,7 +26,8 @@ def create_menu():
     menu.add_option('4', 'Show Read Books', show_read_books)
     menu.add_option('5', 'Show All Books', show_all_books)
     menu.add_option('6', 'Change Book Read Status', change_read)
-    menu.add_option('Q', 'Quit', quit_program)
+    menu.add_option('Q','Quit', quit_program)
+ 
 
     return menu
 
@@ -36,8 +36,8 @@ def add_book():
     try:
         new_book = ui.get_book_info()
         new_book.save()
-    except BookError: 
-        print("\nThis book is already in the store.\n")
+    except:
+            print("Please enter a new book, book already entered.")
     
 
 def show_read_books():
@@ -56,13 +56,13 @@ def show_all_books():
 
 
 def search_book():
-    search_term = ui.ask_question('Enter search term, will match partial authors or titles.')
+    search_term = ui.ask_question('Enter search term, will match partial authors or titles. ')
     matches = store.book_search(search_term)
     ui.show_books(matches)
 
 
 def change_read():
-
+    show_all_books()
     book_id = ui.get_book_id()
     book = store.get_book_by_id(book_id)  
     new_read = ui.get_read_value()     

@@ -1,6 +1,7 @@
 from bookstore import Book
 
 
+
 def display_menu_get_choice(menu):
     """ Displays all of the menu options, checks that the user enters a valid choice and returns the choice.
      :param menu: the menu to display
@@ -65,7 +66,7 @@ def get_read_value():
     """ Ask user to enter 'read' or 'not read'
      :returns: True if user enters 'read' or False if user enters 'not read' """
     while True:
-        response = input('Enter \'read\' if book is read or \'not read\' if book is not read: ')
+        response = input('Enter \'read\' if book is read or \'not read\' if book is not read:')
         if response.lower() in ['read', 'not read']:
             return response.lower() == 'read'
         else:
