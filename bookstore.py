@@ -193,7 +193,7 @@ class BookStore:
                 book = Book(book_data['title'], book_data['author'], book_data['read'], book_data['rowid'])
             else: 
                 return None       
-                # added return None for book not found.    
+                # added return None. Return is used to check and modify is book was found.    
             con.close()            
             
             return book 

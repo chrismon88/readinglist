@@ -72,7 +72,7 @@ def change_read():
         book.read = new_read 
         book.save()
     else:
-        print('\nbook ID enter was not found!\n')
+        print('\nBook ID enter was not found!\n')
            
 
         
