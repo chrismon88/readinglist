@@ -1,4 +1,9 @@
-""" Program to create and manage a list of books that the user wishes to read, and books that the user has read. """
+""" 
+Dan Smestad and Christian Montoya Project 2 Reading List.
+Program to create and manage a list of books that the user wishes to read, 
+and books that the user has read. 
+"""
+
 
 from bookstore import Book, BookStore
 from menu import Menu
@@ -18,7 +23,7 @@ def main():
         if choice == 'Q':
             break
 
-
+#adding option 7 to delete a book of choice.
 def create_menu():
     menu = Menu()
     menu.add_option('1', 'Add Book', add_book)
@@ -27,7 +32,9 @@ def create_menu():
     menu.add_option('4', 'Show Read Books', show_read_books)
     menu.add_option('5', 'Show All Books', show_all_books)
     menu.add_option('6', 'Change Book Read Status', change_read)
+    menu.add_option('7', 'Delete Book', delete_book)
     menu.add_option('Q', 'Quit', quit_program)
+
 
     return menu
 
@@ -38,7 +45,17 @@ def add_book():
         new_book.save()
     except BookError: 
         print("\nThis book is already in the store.\n")
+
+
+def delete_book():
+    try:
+        book_id_to_delete = ui.get_book_id()
+        book = store.get_book_by_id(book_id_to_delete)
+        book = store._delete_book(book)
     
+    except BookError:
+         print('\nError: Book Not Found\n') 
+
 
 def show_read_books():
     read_books = store.get_books_by_read_value(True)
