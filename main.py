@@ -54,7 +54,7 @@ def delete_book():
         book = store._delete_book(book)
     
                 
-    except BookError:
+    except:
          print('\nError: Book Not Found\n') 
 
 
