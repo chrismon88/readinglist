@@ -51,10 +51,10 @@ def delete_book():
     try:
         book_id_to_delete = ui.get_book_id()
         book = store.get_book_by_id(book_id_to_delete)
-        book = store._delete_book(book)
+        book.delete()
     
                 
-    except:
+    except BookError:
          print('\nError: Book Not Found\n') 
 
 
