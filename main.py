@@ -3,6 +3,7 @@
 from bookstore import Book, BookStore
 from menu import Menu
 import ui
+from bookstore import BookError
 
 store = BookStore()
 
@@ -36,7 +37,7 @@ def add_book():
     try:
         new_book = ui.get_book_info()
         new_book.save()
-    except:
+    except BookError:
             print("Please enter a new book, book already entered.")
     
 
@@ -62,7 +63,6 @@ def search_book():
 
 
 def change_read():
-    show_all_books()
     book_id = ui.get_book_id()
     book = store.get_book_by_id(book_id)  
     new_read = ui.get_read_value()     
