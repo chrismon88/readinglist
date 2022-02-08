@@ -61,14 +61,21 @@ def search_book():
     ui.show_books(matches)
 
 
+## modified to check if the book is found or not before allowing modifification.
+# Not None means book is found in database.
 def change_read():
     show_all_books()
     book_id = ui.get_book_id()
-    book = store.get_book_by_id(book_id)  
-    new_read = ui.get_read_value()     
-    book.read = new_read 
-    book.save()
-    
+    book = store.get_book_by_id(book_id)
+    if book is not None:
+        new_read = ui.get_read_value()     
+        book.read = new_read 
+        book.save()
+    else:
+        print('\nBook ID enter was not found!\n')
+           
+
+        
 
 def quit_program():
     ui.message('Thanks and bye!')
