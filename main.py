@@ -51,11 +51,13 @@ def delete_book():
     try:
         book_id_to_delete = ui.get_book_id()
         book = store.get_book_by_id(book_id_to_delete)
-        book.delete()
-    
-                
+        if book:         
+            book.delete()    
+        else:
+            ui.message('\nBook ID not found\n!')    
+
     except BookError:
-         print('\nError: Book Not Found\n') 
+        ui.message('\nError: book database error\n')
 
 
 def show_read_books():
