@@ -7,8 +7,8 @@ and books that the user has read.
 
 from bookstore import Book, BookStore
 from menu import Menu
-from bookstore import BookError
 import ui
+from bookstore import BookError
 
 store = BookStore()
 
@@ -20,7 +20,7 @@ def main():
         choice = ui.display_menu_get_choice(menu)
         action = menu.get_action(choice)
         action()
-        if choice == 'Q':
+        if choice == 'Q' or choice == 'q':
             break
 
 #adding option 7 to delete a book of choice.
@@ -34,7 +34,6 @@ def create_menu():
     menu.add_option('6', 'Change Book Read Status', change_read)
     menu.add_option('7', 'Delete Book', delete_book)
     menu.add_option('Q', 'Quit', quit_program)
-
 
     return menu
 
@@ -58,7 +57,7 @@ def delete_book():
 
     except BookError:
         ui.message('\nError: book database error\n')
-
+        
 
 def show_read_books():
     read_books = store.get_books_by_read_value(True)
@@ -76,18 +75,22 @@ def show_all_books():
 
 
 def search_book():
-    search_term = ui.ask_question('Enter search term, will match partial authors or titles.')
+    search_term = ui.ask_question('Enter search term, will match partial authors or titles. ')
     matches = store.book_search(search_term)
     ui.show_books(matches)
 
 
+## modified to check if the book is found or not before allowing modifification.
+# Not None means book is found in database.
 def change_read():
-
     book_id = ui.get_book_id()
-    book = store.get_book_by_id(book_id)  
-    new_read = ui.get_read_value()     
-    book.read = new_read 
-    book.save()
+    book = store.get_book_by_id(book_id)
+    if book is not None:
+        new_read = ui.get_read_value()     
+        book.read = new_read 
+        book.save()
+    else:
+        print('\nBook ID enter was not found!\n')
 
     
 def quit_program():
