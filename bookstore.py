@@ -17,6 +17,7 @@ class Book:
 
         self.bookstore = BookStore()
 
+    """ The save method allows for user to update a new book or add a new book to be saved """
 
     def save(self):
         if self.id:
