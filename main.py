@@ -1,7 +1,7 @@
 """ 
 Dan Smestad and Christian Montoya Project 2 Reading List.
-Program to create and manage a list of books that the user wishes to read, 
-and books that the user has read. 
+Program to create and manages a list of books in a db that the user wishes to read. 
+user can add remove list and check that the user has read or not read. 
 """
 
 
