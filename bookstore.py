@@ -237,7 +237,7 @@ class BookStore:
             con = sqlite3.connect(db) 
             con.row_factory = sqlite3.Row
             rows = con.execute(get_book_by_id_sql, (read, ) )
-        
+            
             books = []
 
             for r in rows:
