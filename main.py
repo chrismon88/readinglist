@@ -43,7 +43,7 @@ def add_book():
         new_book = ui.get_book_info()
         new_book.save()
     except BookError: 
-        print("\nThis book is already in the store.\n")
+        ui.message('\nThis book is already in the store.\n')
 
 
 def delete_book():
@@ -90,7 +90,7 @@ def change_read():
         book.read = new_read 
         book.save()
     else:
-        print('\nBook ID enter was not found!\n')
+        ui.message('\nBook ID enter was not found!\n')
 
     
 def quit_program():
