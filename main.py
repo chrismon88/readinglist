@@ -88,7 +88,7 @@ def change_read():
     if book is not None:
         new_read = ui.get_read_value()     
         book.read = new_read
-        ui.message(('You have read ' if book.read else 'You have not read ') + book.title + ' by author '+ book.author)      
+        ui.message(('\nYou have read ' if book.read else '\nYou have not read ') + book.title + ' by author '+ book.author +'\n')      
         book.save()
     else:
         ui.message('\nBook ID enter was not found!\n')
